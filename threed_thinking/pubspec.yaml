@@ -60,6 +60,7 @@ flutter:
     - assets/logo.svg
     - assets/background.svg
     - assets/fhaachenLogo.svg
+    - assets/exampleMachine.png
 
  
   fonts:

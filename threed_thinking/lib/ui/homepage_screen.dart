@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:threed_thinking/style/style.dart';
 import 'package:threed_thinking/widgets/appbar_widget.dart';
+import 'package:threed_thinking/widgets/training_pack_card_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -40,11 +41,11 @@ class _HomePageState extends State<HomePage> {
   Widget _getScrollview() {
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: CustomScrollView(slivers: <Widget>[
-        _getSliverHeader(),
-      ]),
+      child: CustomScrollView(
+          slivers: <Widget>[_getSliverHeader(), _getCardList()]),
     );
   }
+
   // return header with information about the company, logo and video
   Widget _getSliverHeader() {
     return SliverAppBar(
@@ -56,10 +57,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Align(
               alignment: Alignment.topLeft,
-              child: SvgPicture.asset(
-                'assets/fhaachenLogo.svg',
-                height: 60
-              ),
+              child: SvgPicture.asset('assets/fhaachenLogo.svg', height: 60),
             ),
             SizedBox(width: 16),
             Expanded(
@@ -81,5 +79,13 @@ class _HomePageState extends State<HomePage> {
                 child: Text('Video coming soon'))
           ],
         ));
+  }
+
+  Widget _getCardList() {
+    return SliverList(
+      delegate: SliverChildListDelegate([
+        TrainingPackCard()
+      ]),
+    );
   }
 }
